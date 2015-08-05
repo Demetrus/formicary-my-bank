@@ -1,3 +1,21 @@
+Concerns
+========
+
+There are several important features/ architectural changes need to be implemented for this project, however they miss from the specification and are not defined. The following list of points are of the major concern for the project:
+
+1) Support for concurrency.
+All 'Account' classes need to be thread-safe. Basic locking mechanism is in place, however the 'transfer' method may lock on itself.
+All collections in the program that can be accessed simultaneously from different threads must implement as thread-safe collections similar to the one used for the 'customers' field in the 'Bank' class.
+
+2) Accounts should not be a encapsulated in the 'Customer' class but in the 'Bank' class itself. The 'Bank' should implement and expose methods to perform actions on accounts to clients. However that would require some form of authentication.
+
+3) Security should be implemented on all levels for every operation. At the moment there are only two roles to define - customer and bank manager. Both should be able to authenticate to the bank and bank should have authorisation policies for both.
+
+4) Need to log every action performed.
+
+5) Need to have a strategy for testing interest rates - probably should be long running tests. Another way to test is to introduce environment variables, however it is not very safe as some of the debugging code may make its way to the production. Also reflection can be used to set protected/private field, however that will break the normal flow of the problem and affect the correctness of tests.
+
+
 Programming Test
 ========
 
